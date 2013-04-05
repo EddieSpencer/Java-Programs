@@ -1,0 +1,26 @@
+<project name="Project 4" default="compile">
+	<target name="compile" depends="clean">
+		<javac srcdir="."/>
+	</target>
+	<target name="run" depends="author, compile">
+		<java fork="yes" failonerror="yes" classname="tcnj.spencee1.Driver" classpath="."> 
+			<arg line=""/>
+		</java>
+	</target>
+	<target name="clean">
+		<delete includeEmptyDirs="true">
+			<fileset dir="." includes="**/*.class, **/*.java~, **/*.xml~, **/*.txt, **/*.txt~, **/*.MF, META-INF" defaultexcludes="no"/>
+		</delete>
+	</target>
+	<target name="author">
+		<echo message="Eddie Spencer: Project 4"/>
+	</target>
+	<target name="jar">
+		<jar jarfile="spencee1.jar">
+			<fileset dir="." includes="**/*.java **/*.xml"/>
+			<manifest>
+				<attribute name="Built-By" value="Eddie Spencer"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
